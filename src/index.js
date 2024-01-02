@@ -5,14 +5,17 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 
 // pas besoin de mettre index.js parce qu'automatiquement quand tu vas chercher un dossier, il va chercher l'index
-import { store } from "store"
+import { store, persistor } from "store"
+import { PersistGate } from "redux-persist/integration/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={ store }>
-    <StrictMode>
-        <App />
-    </StrictMode>
+    <PersistGate persistor={persistor}>
+      <StrictMode>
+          <App />
+      </StrictMode>
+    </PersistGate>
   </Provider>
 
 );
